@@ -1,30 +1,25 @@
-function Memoize(elem, id) {
-  var elem = document.getElementById('para');
-  if(eleme === cachedElement) {
+function memoize(id, elem) {
+  // var elem = document.getElementById(id);
+  let cachedElement = null;
+  if(elem === cachedElement) {
       console.log(memoize.cachedElement, 'cached element');
-      return eleme.cachedElement.innerHTML;
+      return elem.cachedElement.innerHTML;
     }
   else {
-    var newElem = document.getElementById('para');
-    cachedElement = newElem;
-    return newElem.innerHTML;
+    console.log('not in cache');
+    // var newElem = document.getElementById(id);
+    cachedElement = elem;
+    console.log('cached element', cachedElement)
+    return cachedElement.innerHTML;
   }
 }
 
+memoize('para', 'p');
+
 //
-// function memoize(element, idName) {
-//   var element = document.createElement('div');
-//
-//   console.log(element.id)
-//   let cachedElement = null;
-//   if(element === cachedElement) {
-//     console.log(memoize.cachedElement, 'cached element');
-//     return element.cachedElement.innerHTML;
-//   }
-//   else {
-//     var newThing = document.getElementById('div');
-//     memoize.cachedElement = newThing;
-//     return newThing.innerHTML;
-//   }
-// }
-// memoize('something', 'div id');
+// calling an element (by id or selector)
+//   if element does not exist in cache
+//     store the element in memory
+//     serve the element
+//   else if element does exist in cache
+//     serve the cache value (which should be the element)
