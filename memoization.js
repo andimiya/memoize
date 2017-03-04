@@ -1,22 +1,22 @@
-
+//holds a cached element
+let cachedElement = {};
 
 function memoize(id, elem) {
-  // var elem = document.getElementById(id);
-  let cachedElement = {};
-
   if(elem === cachedElement) {
-      console.log(memoize.cachedElement, 'cached element');
-      return elem.cachedElement.innerHTML;
+      console.log(elem, 'cached element');
+      return cachedElement.innerHTML;
     }
   else {
     console.log('not in cache');
-    // var newElem = document.getElementById(id);
+    //if element does not exist in cached, store the element in the cache
     cachedElement = elem;
     console.log('cached element', cachedElement)
     return cachedElement.innerHTML;
   }
 }
 
+memoize('para', 'p');
+memoize('para', 'p');
 memoize('para', 'p');
 memoize('para', 'p');
 
