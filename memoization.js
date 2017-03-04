@@ -1,17 +1,16 @@
 //holds a cached element
-let cachedElement = {};
+let cache = {};
 
 function memoize(id, elem) {
-  if(elem === cachedElement) {
+  if(elem === cache) {
       console.log(elem, 'cached element');
-      return cachedElement.innerHTML;
+      document.getElementById(id).innerHTML = elem;
     }
   else {
     console.log('not in cache');
-    //if element does not exist in cached, store the element in the cache
-    cachedElement = elem;
+    cache = elem;
     console.log('cached element', cachedElement)
-    return cachedElement.innerHTML;
+    document.getElementById(id).innerHTML = 'not in cache';
   }
 }
 
