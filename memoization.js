@@ -1,25 +1,42 @@
 //holds a cached element
-let cache = {};
 
-function memoize(id, elem) {
-  if(elem === cache) {
-      console.log(elem, 'cached element');
-      document.getElementById(id).innerHTML = elem;
+
+
+
+function memoizeQuery() {
+  var cache = {};
+  return function (sel) {
+    if(cache.hasOwnProperty(sel)) {
+      console.log('returning cache');
+      return cache[sel]
+    } else {
+      console.log('setting the cache');
+      return cache[sel] = document.querySelectorAll(sel);
     }
-  else {
-    console.log('not in cache');
-    cache = elem;
-    console.log('cached element', cachedElement)
-    document.getElementById(id).innerHTML = 'not in cache';
   }
 }
-
-memoize('para', 'p');
-memoize('para', 'p');
-memoize('para', 'p');
-memoize('para', 'p');
-
-
+//
+//   if(cache.hasOwnProperty(sel)) {
+//       console.log(elem, 'cached element');
+//       document.getElementById(id).innerHTML = elem;
+//     }
+//   else {
+//     console.log('not in cache');
+//     cache = elem;
+//     console.log('cached element', cache)
+//     document.getElementById(id).innerHTML = 'not in cache';
+//   }
+// }
+//
+//
+// memoizeQuery('para', 'p');
+// memoizeQuery('para', 'p');
+// memoizeQuery('para', 'p');
+// memoizeQuery('para', 'p');
+//
+// module.exports = {
+//   memoize: memoize
+// }
 //
 // calling an element (by id or selector)
 //   if element does not exist in cache
