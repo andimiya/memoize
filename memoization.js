@@ -1,6 +1,9 @@
+
+
 function memoize(id, elem) {
   // var elem = document.getElementById(id);
-  let cachedElement = null;
+  let cachedElement = {};
+
   if(elem === cachedElement) {
       console.log(memoize.cachedElement, 'cached element');
       return elem.cachedElement.innerHTML;
@@ -15,6 +18,8 @@ function memoize(id, elem) {
 }
 
 memoize('para', 'p');
+memoize('para', 'p');
+
 
 //
 // calling an element (by id or selector)
